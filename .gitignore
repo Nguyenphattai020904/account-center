@@ -1,0 +1,60 @@
+# Node
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+
+# Build output
+dist/
+build/
+.cache/
+
+# Dependency directories
+jspm_packages/
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Misc
+*.pem
+*.key
+*.db
+*.sqlite3
+
+# Temporary
+.temp/
+.tmp/
+
+# Ignore local npm debug directories
+node_modules/.cache/
+
+# Allow README, package files, and env example
+# (do not ignore package.json or README.md)

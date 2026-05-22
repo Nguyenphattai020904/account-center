@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account Center Manager</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%2309191f'/%3E%3Cpath d='M24 8a10 10 0 00-10 10v4h-2a4 4 0 00-4 4v10a4 4 0 004 4h24a4 4 0 004-4V26a4 4 0 00-4-4h-2v-4A10 10 0 0024 8zm-6 14v-4a6 6 0 1112 0v4H18z' fill='%2300f5d4'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <header class="topbar">
+      <div class="topbar-row">
+        <div class="brand">
+          <span class="brand-bracket">[</span>
+          <h1>Account Center Manager</h1>
+          <span class="brand-bracket">]</span>
+        </div>
+        <div class="auth-inline">
+          <span id="userBadge" class="user-badge"></span>
+          <button id="logoutBtn" type="button" class="btn btn-ghost">
+            Logout
+          </button>
+        </div>
+      </div>
+      <p class="subtitle">Neon vault for games, servers, and tools</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel panel-left">
+        <h2 class="panel-title">Master Lock</h2>
+        <p class="panel-note" id="masterStatus">
+          Master password is not configured.
+        </p>
+
+        <form id="masterForm" class="terminal-form">
+          <label for="masterCurrent"
+            >Current Master Password (required if already set)</label
+          >
+          <input
+            id="masterCurrent"
+            type="password"
+            placeholder="Current master password"
+            autocomplete="off"
+          />
+
+          <label for="masterNew">New Master Password</label>
+          <input
+            id="masterNew"
+            type="password"
+            placeholder="New master password"
+            required
+            autocomplete="off"
+          />
+
+          <label for="masterConfirm">Confirm New Master Password</label>
+          <input
+            id="masterConfirm"
+            type="password"
+            placeholder="Confirm password"
+            required
+            autocomplete="off"
+          />
+
+          <button type="submit" class="btn btn-primary">
+            Save Master Password
+          </button>
+        </form>
+
+        <h2 class="panel-title">Add Account</h2>
+        <form id="accountForm" class="terminal-form">
+          <label for="title">Title</label>
+          <input
+            id="title"
+            type="text"
+            placeholder="Valorant / VPS / Notion"
+            required
+          />
+
+          <label for="loginType">Login Type</label>
+          <input
+            id="loginType"
+            type="text"
+            placeholder="Google / Email / SSH"
+            required
+          />
+
+          <label for="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            placeholder="your_username"
+            required
+          />
+
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            required
+          />
+
+          <label for="loginUrl">Login URL (optional)</label>
+          <input
+            id="loginUrl"
+            type="url"
+            placeholder="https://example.com/login"
+          />
+
+          <button type="submit" class="btn btn-primary">Save Account</button>
+        </form>
+      </section>
+
+      <section class="panel panel-middle">
+        <div class="list-head">
+          <h2 class="panel-title">Accounts</h2>
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search title, user, login type..."
+          />
+        </div>
+        <div id="accountList" class="account-list"></div>
+      </section>
+
+      <section class="panel panel-right">
+        <h2 class="panel-title">Account Detail</h2>
+        <div id="detailPanel" class="detail-panel locked">
+          <p class="placeholder">
+            Select an account card and unlock with master password.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <div
+      id="authModal"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="authTitle"
+    >
+      <div class="modal-content">
+        <h3 id="authTitle">Master Password Required</h3>
+        <p>Enter your master password to unlock account details.</p>
+        <form id="authForm">
+          <input
+            id="authMaster"
+            type="password"
+            placeholder="Master password"
+            required
+            autocomplete="off"
+          />
+          <div class="modal-actions">
+            <button type="button" id="authCancel" class="btn btn-ghost">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">Unlock</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

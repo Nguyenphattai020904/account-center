@@ -1,0 +1,19 @@
+CREATE DATABASE IF NOT EXISTS center CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE center;
+
+CREATE TABLE IF NOT EXISTS app_settings (
+  setting_key VARCHAR(100) NOT NULL PRIMARY KEY,
+  setting_value TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS accounts (
+  id VARCHAR(64) NOT NULL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  login_type VARCHAR(120) NOT NULL,
+  username VARCHAR(255) NOT NULL,
+  password_enc TEXT NOT NULL,
+  login_url TEXT NULL,
+  password_history LONGTEXT NOT NULL,
+  created_at DATETIME NOT NULL,
+  updated_at DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

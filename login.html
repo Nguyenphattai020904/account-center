@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Login | Account Center</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%2309191f'/%3E%3Cpath d='M24 8a10 10 0 00-10 10v4h-2a4 4 0 00-4 4v10a4 4 0 004 4h24a4 4 0 004-4V26a4 4 0 00-4-4h-2v-4A10 10 0 0024 8zm-6 14v-4a6 6 0 1112 0v4H18z' fill='%2300f5d4'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-bracket">[</span>
+        <h1>Account Center Manager</h1>
+        <span class="brand-bracket">]</span>
+      </div>
+      <p class="subtitle">Neon vault for games, servers, and tools</p>
+    </header>
+
+    <main class="login-wrap">
+      <section class="panel login-panel">
+        <h2 class="panel-title">Google Access Gate</h2>
+        <p class="panel-note" id="allowedEmailLabel"></p>
+        <p class="panel-note">
+          Chỉ đúng tài khoản Google được cấp quyền mới đăng nhập được.
+        </p>
+
+        <div id="googleBtn" class="google-btn-box"></div>
+        <p id="loginStatus" class="panel-note"></p>
+      </section>
+    </main>
+
+    <script src="login.js"></script>
+  </body>
+</html>
