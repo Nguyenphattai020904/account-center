@@ -49,11 +49,18 @@ npm install
 cp .env.example .env
 ```
 
-3. Cập nhật `.env`:
+3. Cập nhật `.env` (thêm Google + session + DB):
 
 ```dotenv
 GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
 SESSION_SECRET=your-long-random-secret
+# Database (MySQL)
+# If you run MySQL on localhost with root user and password ServBay.dev, use:
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASS=ServBay.dev
+DB_NAME=center
 ```
 
 4. Chạy server:
@@ -90,10 +97,12 @@ Whitelist này đang đặt trong `server.js` tại biến `allowedGoogleEmail`.
 
 Server tự động:
 
-- Tạo database `center` nếu chưa tồn tại
+- Tạo database specified by `DB_NAME` (default `center`) nếu chưa tồn tại
 - Tạo các bảng cần thiết nếu chưa có
 
-Bạn không bắt buộc phải chạy tay `mysql_setup.sql` trong luồng bình thường.
+Bạn có thể cấu hình database bằng các biến môi trường trong `.env` (ví dụ ở trên). Nếu bạn giữ MySQL mặc định như trước, `DB_USER=root` và `DB_PASS=ServBay.dev` sẽ hoạt động theo cấu hình hiện tại.
+
+Vì server tự động tạo database/tables, bạn không bắt buộc phải chạy `mysql_setup.sql` thủ công trong luồng bình thường.
 
 ## API Notes
 

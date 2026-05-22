@@ -159,6 +159,7 @@ body {
     grid-template-columns: 1.05fr 1fr 1.2fr;
     gap: 16px;
     padding: 12px 20px 24px;
+    height: calc(100vh - 120px);
 }
 
 .panel {
@@ -169,6 +170,9 @@ body {
     box-shadow: 0 10px 0 rgba(116, 164, 224, 0.28), 0 12px 28px rgba(114, 146, 192, 0.25);
     backdrop-filter: blur(4px);
     animation: riseIn 460ms ease-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .panel-title {
@@ -263,46 +267,89 @@ textarea:focus {
     border-color: rgba(131, 171, 223, 0.7);
 }
 
+.panel-middle {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .list-head {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
+    z-index: 2;
 }
 
 .account-list {
     display: grid;
     gap: 10px;
-    max-height: calc(100vh - 230px);
+    flex: 1 1 auto;
     overflow: auto;
-    padding-right: 4px;
+    padding-right: 8px;
+    padding-left: 4px;
+}
+
+/* Improve card sizing so each account shows full content */
+.account-list {
+    grid-auto-rows: minmax(96px, auto);
 }
 
 .account-card {
     border: 2px solid rgba(130, 171, 223, 0.7);
     border-radius: 14px;
-    padding: 11px;
-    background: rgba(255, 255, 255, 0.95);
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.98);
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
     transition: border-color 150ms ease, box-shadow 180ms ease, transform 120ms ease;
 }
 
 .account-card:hover {
     border-color: #ff92bd;
-    box-shadow: 0 8px 0 rgba(255, 169, 201, 0.35);
-    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(255, 150, 190, 0.12);
+    transform: translateY(-4px);
 }
 
 .account-title {
     margin: 0 0 6px;
     color: #314f77;
+    font-size: 1.02rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: normal;
 }
 
 .account-meta {
     margin: 0;
     color: var(--muted);
-    font-size: 0.82rem;
+    font-size: 0.88rem;
+    word-break: break-word;
+}
+
+/* Nice custom scrollbar for modern browsers */
+.account-list::-webkit-scrollbar {
+    width: 12px;
+}
+
+.account-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.account-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(153, 187, 236, 0.6), rgba(255, 183, 212, 0.6));
+    border-radius: 10px;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Firefox scrollbar */
+.account-list {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(153, 187, 236, 0.6) transparent;
 }
 
 .empty-state {

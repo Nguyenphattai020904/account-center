@@ -12,12 +12,12 @@ const allowedGoogleEmail = "phattai02092004@gmail.com";
 const googleClientId = process.env.GOOGLE_CLIENT_ID || "";
 const oauthClient = new OAuth2Client();
 const dbConfig = {
-  host: "127.0.0.1",
-  port: 3306,
-  user: "root",
-  password: "ServBay.dev",
+  host: process.env.DB_HOST || "127.0.0.1",
+  port: Number(process.env.DB_PORT || 3306),
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASS || "",
 };
-const dbName = "center";
+const dbName = process.env.DB_NAME || "center";
 
 let pool;
 
